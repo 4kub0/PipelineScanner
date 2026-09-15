@@ -1,0 +1,19 @@
+name: Vulnerable PR Review
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR Head (VULNERABLE)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Run Tests with Secret Access
+        run: |
+          npm test
+        env:
+          PROD_API_KEY: ${{ secrets.PROD_API_KEY }}
