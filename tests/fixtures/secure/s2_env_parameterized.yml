@@ -1,0 +1,17 @@
+name: Secure Parameterized Workflow
+on:
+  pull_request:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  process_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Safely Process PR Title via Environment Variable
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "Processing Pull Request: $PR_TITLE"

@@ -1,0 +1,15 @@
+name: Vulnerable Script Injection
+on:
+  pull_request:
+    types: [opened, edited]
+  issues:
+    types: [opened, edited]
+
+jobs:
+  process_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo PR Title (VULNERABLE SCRIPT INJECTION)
+        run: |
+          echo "Processing Pull Request: ${{ github.event.pull_request.title }}"
+          echo "Issue description: ${{ github.event.issue.body }}"
