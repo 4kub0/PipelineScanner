@@ -4,7 +4,12 @@ from pathlib import Path
 from typing import List, Union
 from pipelineguard.models import Finding, ScanReport
 from pipelineguard.parser import WorkflowParser
-from pipelineguard.rules import BaseRule, PullRequestTargetPoisoningRule
+from pipelineguard.rules import (
+    BaseRule,
+    PullRequestTargetPoisoningRule,
+    ScriptInjectionRule,
+    OverprivilegedPermissionsRule,
+)
 
 
 class ScanEngine:
@@ -14,6 +19,8 @@ class ScanEngine:
         self.parser = WorkflowParser()
         self.rules: List[BaseRule] = rules or [
             PullRequestTargetPoisoningRule(),
+            ScriptInjectionRule(),
+            OverprivilegedPermissionsRule(),
         ]
 
     def scan_file(self, file_path: Union[str, Path]) -> List[Finding]:

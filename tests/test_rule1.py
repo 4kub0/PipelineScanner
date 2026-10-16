@@ -18,7 +18,7 @@ def test_vulnerable_pull_request_target_detected(fixtures_dir: Path):
     assert vuln_file.exists(), f"Missing fixture file: {vuln_file}"
 
     engine = ScanEngine()
-    findings = engine.scan_file(vuln_file)
+    findings = [f for f in engine.scan_file(vuln_file) if f.rule_id == "PG-001"]
 
     assert len(findings) == 1
     finding = findings[0]
