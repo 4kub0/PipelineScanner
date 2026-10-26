@@ -106,3 +106,4 @@ def test_read_all_is_clean():
     findings = rule.check(ast_read_all, "read.yml")
 
     assert len(findings) == 0
+

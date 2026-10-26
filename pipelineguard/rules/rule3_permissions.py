@@ -126,3 +126,4 @@ class OverprivilegedPermissionsRule(BaseRule):
                     )
 
         return findings
+

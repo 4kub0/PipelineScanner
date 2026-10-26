@@ -9,6 +9,7 @@ from pipelineguard.rules import (
     PullRequestTargetPoisoningRule,
     ScriptInjectionRule,
     OverprivilegedPermissionsRule,
+    UnpinnedActionRule,
 )
 
 
@@ -21,6 +22,7 @@ class ScanEngine:
             PullRequestTargetPoisoningRule(),
             ScriptInjectionRule(),
             OverprivilegedPermissionsRule(),
+            UnpinnedActionRule(),
         ]
 
     def scan_file(self, file_path: Union[str, Path]) -> List[Finding]:
