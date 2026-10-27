@@ -34,3 +34,5 @@ LEARNING_AND_INTERVIEW_GUIDE.md
 results.sarif
 results.json
 *.sarif
+*.pdf
+generate_pdf.py
