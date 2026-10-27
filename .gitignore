@@ -35,4 +35,4 @@ results.sarif
 results.json
 *.sarif
 *.pdf
-generate_pdf.py
+generate_*.py
